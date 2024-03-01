@@ -46,7 +46,7 @@ export async function POST(
         }
       });
 
-       // Update all connections with new conversation
+       // 使用新会话更新所有连接
       newConversation.users.forEach((user) => {
         if (user.email) {
           pusherServer.trigger(user.email, 'conversation:new', newConversation);

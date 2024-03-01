@@ -67,18 +67,18 @@ export async function POST(
       }
     });
 
-    // Update all connections with new seen
+    // 如果有新的已读，更新所有连接
     await pusherServer.trigger(currentUser.email, 'conversation:update', {
       id: conversationId,
       messages: [updatedMessage]
     });
 
-    // If user has already seen the message, no need to go further
+    // 如果用户已经看到消息，则不需要继续
     if (lastMessage.seenIds.indexOf(currentUser.id) !== -1) {
       return NextResponse.json(conversation);
     }
 
-    // Update last message seen
+    // 更新最后一次已读
     await pusherServer.trigger(conversationId!, 'message:update', updatedMessage);
 
     return new NextResponse('Success');
