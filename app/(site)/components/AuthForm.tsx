@@ -59,14 +59,14 @@ const AuthForm = () => {
       }))
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('无效的凭证！');
         }
 
         if (callback?.ok) {
           router.push('/conversations')
         }
       })
-      .catch(() => toast.error('Something went wrong!'))
+      .catch(() => toast.error('出错了！'))
       .finally(() => setIsLoading(false))
     }
 
@@ -77,7 +77,7 @@ const AuthForm = () => {
       })
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('无效的凭证！');
         }
 
         if (callback?.ok) {
@@ -94,7 +94,7 @@ const AuthForm = () => {
     signIn(action, { redirect: false })
       .then((callback) => {
         if (callback?.error) {
-          toast.error('Invalid credentials!');
+          toast.error('无效的凭证！');
         }
 
         if (callback?.ok) {
@@ -127,7 +127,7 @@ const AuthForm = () => {
               errors={errors}
               required
               id="name" 
-              label="Name"
+              label="姓名"
             />
           )}
           <Input 
@@ -136,7 +136,7 @@ const AuthForm = () => {
             errors={errors}
             required
             id="email" 
-            label="Email address" 
+            label="电子邮件地址" 
             type="email"
           />
           <Input 
@@ -145,12 +145,12 @@ const AuthForm = () => {
             errors={errors}
             required
             id="password" 
-            label="Password" 
+            label="密码" 
             type="password"
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
-              {variant === 'LOGIN' ? 'Sign in' : 'Register'}
+              {variant === 'LOGIN' ? '登录' : '注册'}
             </Button>
           </div>
         </form>
@@ -169,7 +169,7 @@ const AuthForm = () => {
             </div>
             <div className="relative flex justify-center text-sm">
               <span className="bg-white px-2 text-gray-500">
-                Or continue with
+                或继续使用
               </span>
             </div>
           </div>
@@ -197,13 +197,13 @@ const AuthForm = () => {
           "
         >
           <div>
-            {variant === 'LOGIN' ? 'New to Messenger?' : 'Already have an account?'} 
+            {variant === 'LOGIN' ? '新用户吗？' : '已经有账户了吗？'} 
           </div>
           <div 
             onClick={toggleVariant} 
             className="underline cursor-pointer"
           >
-            {variant === 'LOGIN' ? 'Create an account' : 'Login'}
+            {variant === 'LOGIN' ? '创建账户' : '登录'}
           </div>
         </div>
       </div>

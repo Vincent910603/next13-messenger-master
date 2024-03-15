@@ -18,11 +18,11 @@ export async function POST(
     } = body;
 
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse('Unauthorized', { status: 400 });
+      return new NextResponse('未授权', { status: 400 });
     }
 
     if (isGroup && (!members || members.length < 2 || !name)) {
-      return new NextResponse('Invalid data', { status: 400 });
+      return new NextResponse('无效数据', { status: 400 });
     }
 
     if (isGroup) {
@@ -106,6 +106,6 @@ export async function POST(
 
     return NextResponse.json(newConversation)
   } catch (error) {
-    return new NextResponse('Internal Error', { status: 500 });
+    return new NextResponse('内部错误', { status: 500 });
   }
 }
