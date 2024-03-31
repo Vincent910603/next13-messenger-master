@@ -17,7 +17,7 @@ export async function POST(
     } = body;
 
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse('Unauthorized', { status: 401 });
+      return new NextResponse('未授权', { status: 401 });
     }
 
     const newMessage = await prisma.message.create({

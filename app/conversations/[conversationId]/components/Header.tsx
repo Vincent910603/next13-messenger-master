@@ -27,10 +27,10 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
   const isActive = members.indexOf(otherUser?.email!) !== -1;
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
-      return `${conversation.users.length} members`;
+      return `${conversation.users.length} 成员`;
     }
 
-    return isActive ? 'Active' : 'Offline'
+    return isActive ? '在线' : '离线'
   }, [conversation, isActive]);
 
   return (

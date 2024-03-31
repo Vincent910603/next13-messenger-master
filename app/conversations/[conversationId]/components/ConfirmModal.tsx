@@ -23,7 +23,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   const { conversationId } = useConversation();
   const [isLoading, setIsLoading] = useState(false);
   
-  const onDelete = useCallback(() => {
+  const onDelete = useCallback(() => { 
     setIsLoading(true);
 
     axios.delete(`/api/conversations/${conversationId}`)
@@ -32,7 +32,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
       router.push('/conversations');
       router.refresh();
     })
-    .catch(() => toast.error('Something went wrong!'))
+    .catch(() => toast.error('某些错误!'))
     .finally(() => setIsLoading(false))
   }, [router, conversationId, onClose]);
 
@@ -73,11 +73,11 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
             as="h3" 
             className="text-base font-semibold leading-6 text-gray-900"
           >
-            Delete conversation
+            删除聊天室
           </Dialog.Title>
           <div className="mt-2">
             <p className="text-sm text-gray-500">
-              Are you sure you want to delete this conversation? This action cannot be undone.
+              您确定要删除此对话吗？这个操作无法撤销。
             </p>
           </div>
         </div>
@@ -88,14 +88,14 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
           danger
           onClick={onDelete}
         >
-          Delete
+          删除
         </Button>
         <Button
           disabled={isLoading}
           secondary
           onClick={onClose}
         >
-          Cancel
+          取消
         </Button>
       </div>
     </Modal>

@@ -60,7 +60,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
       router.refresh();
       onClose();
     })
-    .catch(() => toast.error('Something went wrong!'))
+    .catch(() => toast.error('某些错误!'))
     .finally(() => setIsLoading(false));
   }
 
@@ -77,16 +77,16 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 text-gray-900
               "
             >
-              Profile
+              简介
             </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Edit your public information.
+              编辑你的个人信息
             </p>
 
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
-                label="Name" 
+                label="姓名" 
                 id="name" 
                 errors={errors} 
                 required 
@@ -103,7 +103,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                     text-gray-900
                   "
                 >
-                  Photo
+                  头像
                 </label>
                 <div className="mt-2 flex items-center gap-x-3">
                   <Image
@@ -116,14 +116,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   <CldUploadButton 
                     options={{ maxFiles: 1 }} 
                     onUpload={handleUpload} 
-                    uploadPreset="pgc9ehd5"
+                    uploadPreset="uthr5lrz"
                   >
                     <Button
                       disabled={isLoading}
                       secondary
                       type="button"
                     >
-                      Change
+                      变换
                     </Button>
                   </CldUploadButton>
                 </div>
@@ -146,13 +146,13 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
             secondary 
             onClick={onClose}
           >
-            Cancel
+            取消
           </Button>
           <Button 
             disabled={isLoading}
             type="submit"
           >
-            Save
+            保存
           </Button>
         </div>
       </form>

@@ -58,7 +58,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
       router.refresh();
       onClose();
     })
-    .catch(() => toast.error('Something went wrong!'))
+    .catch(() => toast.error('某些错误!'))
     .finally(() => setIsLoading(false));
   }
 
@@ -75,15 +75,15 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
                 text-gray-900
               "
               >
-                Create a group chat
+                创建一个群聊
               </h2>
             <p className="mt-1 text-sm leading-6 text-gray-600">
-              Create a chat with more than 2 people.
+              创建一个超过两个人的聊天室
             </p>
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
                 disabled={isLoading}
-                label="Name" 
+                label="群名称" 
                 id="name" 
                 errors={errors} 
                 required 
@@ -91,7 +91,7 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
               />
               <Select
                 disabled={isLoading}
-                label="Members" 
+                label="成员" 
                 options={users.map((user) => ({ 
                   value: user.id, 
                   label: user.name 
@@ -111,10 +111,10 @@ const GroupChatModal: React.FC<GroupChatModalProps> = ({
             type="button"
             secondary
           >
-            Cancel
+            取消
           </Button>
           <Button disabled={isLoading} type="submit">
-            Create
+            创建
           </Button>
         </div>
       </form>

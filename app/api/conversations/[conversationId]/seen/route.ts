@@ -20,10 +20,9 @@ export async function POST(
 
     
     if (!currentUser?.id || !currentUser?.email) {
-      return new NextResponse('Unauthorized', { status: 401 });
+      return new NextResponse('未授权', { status: 401 });
     }
 
-    // Find existing conversation
     const conversation = await prisma.conversation.findUnique({
       where: {
         id: conversationId,
@@ -39,17 +38,16 @@ export async function POST(
     });
 
     if (!conversation) {
-      return new NextResponse('Invalid ID', { status: 400 });
+      return new NextResponse('无效ID', { status: 400 });
     }
 
-    // Find last message
     const lastMessage = conversation.messages[conversation.messages.length - 1];
 
     if (!lastMessage) {
       return NextResponse.json(conversation);
     }
 
-    // Update seen of last message
+  
     const updatedMessage = await prisma.message.update({
       where: {
         id: lastMessage.id
@@ -81,9 +79,9 @@ export async function POST(
     // 更新最后一次已读
     await pusherServer.trigger(conversationId!, 'message:update', updatedMessage);
 
-    return new NextResponse('Success');
+    return new NextResponse('成功');
   } catch (error) {
     console.log(error, 'ERROR_MESSAGES_SEEN')
-    return new NextResponse('Error', { status: 500 });
+    return new NextResponse('错误', { status: 500 });
   }
 }
